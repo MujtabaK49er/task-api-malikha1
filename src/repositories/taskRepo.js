@@ -1,21 +1,19 @@
 import prisma from '../config/db.js';
 
 export async function findAll() {
-  return prisma.task.findMany();
+  return await prisma.task.findMany();
 }
 
-// Making a new function for filtering........
 export async function findByCompleted(completed) {
-  return prisma.task.findMany({
+  return await prisma.task.findMany({
     where: {
-      completed: completed
-    }
+      completed: completed,
+    },
   });
 }
 
-// Create a new task
 export async function create(data) {
-  return prisma.task.create({
+  return await prisma.task.create({
     data,
   });
 }
