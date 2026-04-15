@@ -5,12 +5,6 @@ export async function getAllTasks(completed) {
     return await taskRepository.findAll();
   }
 
-  if (completed !== 'true' && completed !== 'false') {
-    const error = new Error('Invalid completed query parameter');
-    error.status = 400;
-    throw error;
-  }
-
   const isCompleted = completed === 'true';
   return await taskRepository.findByCompleted(isCompleted);
 }
